@@ -32,7 +32,7 @@ jobs:
     
       - name: Run tests
         run: |
-          echo "work directory: `pwd`
+          echo "work directory: `pwd`"
           cd my-rust-actions && cargo test --verbose
         
         
