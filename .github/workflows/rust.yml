@@ -16,8 +16,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        with:
-          path: main
 
       - name: Checkout private rep
         uses: actions/checkout@v3
