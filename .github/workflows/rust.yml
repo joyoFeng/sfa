@@ -19,7 +19,7 @@ jobs:
     
     - name: clone private and Build
       run: |
-        git clone https://github.com/joyoFeng/rust-actions.git --recursive
+        git git@github.com:joyoFeng/rust-actions.git --recursive
         cd rust-actions && cargo build --verbose
     
     - name: Run tests
