@@ -15,19 +15,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+        with:
+          path: main
+
+      - name: Checkout private rep
+        uses: actions/checkout@v3
+        with:
+          repository: joyoFeng/rust-action
+          token: ${{ secrets.GH_PAT }} # `GH_PAT` is a secret that contains your PAT
+          path: my-rust-actions
+      
+      - name:  Build
+        run: |
+          cd my-rust-actions && cargo build --verbose
     
-    - name: clone private and Build
-      run: |
-        git git@github.com:joyoFeng/rust-actions.git --recursive
-        cd rust-actions && cargo build --verbose
-    
-    - name: Run tests
-      run: |
-        echo "work directory: `pwd`
-        cargo test --verbose
+      - name: Run tests
+        run: |
+          echo "work directory: `pwd`
+          cd my-rust-actions && cargo test --verbose
         
         
-    - name: marked as success
-      run: |
-        echo "### Run code passed  :white_check_mark:" >> $GITHUB_STEP_SUMMARY
+      - name: marked as success
+        run: |
+          echo "### Run code passed  :white_check_mark:" >> $GITHUB_STEP_SUMMARY
