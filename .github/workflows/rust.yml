@@ -16,15 +16,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        #with:
-        #  path: master
+        with:
+          path: sfa
 
       - name: Checkout private rep
         uses: actions/checkout@v3
         with:
           repository: joyoFeng/rust-actions
           token: ${{ secrets.GH_PAT }} # `GH_PAT` is a secret that contains your PAT
-          #path: my-rust-actions
+          #path: rust-actions
       
       - name:  Build
         run: |
